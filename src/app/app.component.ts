@@ -19,6 +19,7 @@ pathYellow: string;
 donePlaying: boolean;
 indexForNotesPlaying: number;
 gameResult: string;
+clickedOnRandom: boolean;
 
 constructor () {
   this.audio = new Audio();
@@ -31,6 +32,7 @@ constructor () {
   this.indexForNotesPlaying = -1;
   this.gameResult = '';
   this.generateRandom();
+  this.clickedOnRandom = false;
 }
 
 playnote($event) {
@@ -57,7 +59,7 @@ playnote($event) {
 }
 
   async playRandom() {
- 
+    this.clickedOnRandom = true;
    for (let i=0; i<this.randomButtons.length; i++) {
     await delay(600);
      console.log(this.randomButtons[i]);
@@ -121,12 +123,13 @@ playnote($event) {
     this.indexForNotesPlaying = -1;
     this.gameResult = '';
      this.generateRandom();
+     this.clickedOnRandom = false;
   }
 
 
   generateRandom() {
      this.randomButtons = [];
-     for (let i=0; i<6; i++) {
+     for (let i=0; i<5; i++) {
       switch (Math.floor(Math.random() * 4) + 1) {
          case 1:
              this.randomButtons[i] = 'red';

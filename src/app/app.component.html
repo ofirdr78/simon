@@ -6,7 +6,7 @@
 </div>
 
 
-<button (click)=playRandom()>click to listen...</button>
+<button *ngIf="!clickedOnRandom" (click)=playRandom()>click to listen...</button>
 
 <div class="result">
 {{gameResult}}
