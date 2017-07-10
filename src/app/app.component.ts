@@ -110,11 +110,13 @@ playnote($event) {
     console.log(this.randomButtons[this.indexForNotesPlaying]);
      if (x.search(this.randomButtons[this.indexForNotesPlaying]) == -1) {
        this.gameResult = "You were wrong... Game Over!"
-       this.indexForNotesPlaying = -1;
+       this.clickedOnRandom = true;
+
      }
 
      if (this.indexForNotesPlaying + 1 == this.randomButtons.length) {
        this.gameResult = "Congratulations, You Won!"
+       this.clickedOnRandom = true;
   }
   
 }
