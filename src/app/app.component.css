@@ -1,0 +1,27 @@
+.button_wrapper {
+    position: absolute;
+    top: 200px;
+    left: 600px;
+    display: inline-block;  
+    margin: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+.buttons {
+    height: 200px;
+    width: 200px;
+}
+
+.buttons:hover {
+    box-shadow: 0 0 50px 2px white;
+}
+
+.result {
+    color: red;
+    position: absolute;
+    font-size: 40px;
+    top: 800px;
+    left: 600px;
+}
+
