@@ -9,6 +9,10 @@
 <button *ngIf="!clickedOnRandom" (click)=playRandom()>click to listen...</button>
 <button *ngIf="clickedOnRandom" disabled> Disabled...</button>
 
+<div class="level">
+Level: {{level}}
+</div>
+
 <div class="result">
 {{gameResult}}
 </div>

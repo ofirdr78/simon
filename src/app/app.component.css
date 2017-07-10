@@ -25,3 +25,10 @@
     left: 600px;
 }
 
+.level {
+    color: white;
+    position: absolute;
+    font-size: 40px;
+    top: 40px;
+    left: 10px;
+}

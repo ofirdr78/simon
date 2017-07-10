@@ -20,6 +20,8 @@ donePlaying: boolean;
 indexForNotesPlaying: number;
 gameResult: string;
 clickedOnRandom: boolean;
+level: number;
+gameOver: boolean;
 
 constructor () {
   this.audio = new Audio();
@@ -31,8 +33,10 @@ constructor () {
   this.donePlaying = false;
   this.indexForNotesPlaying = -1;
   this.gameResult = '';
-  this.generateRandom();
+  this.generateRandom(1);
   this.clickedOnRandom = false;
+  this.level = 1;
+  this.gameOver = false;
 }
 
 playnote($event) {
@@ -52,13 +56,17 @@ playnote($event) {
   }
     this.audio.load();
     this.audio.play();
-
-    this.checkIfSimilarToRandom($event.srcElement.src);
+ 
+    if (!this.gameOver) {
+      this.checkIfSimilarToRandom($event.srcElement.src);
+    }
+    
 
    
 }
 
   async playRandom() {
+    this.gameResult = '';
     this.clickedOnRandom = true;
    for (let i=0; i<this.randomButtons.length; i++) {
     await delay(600);
@@ -111,12 +119,19 @@ playnote($event) {
      if (x.search(this.randomButtons[this.indexForNotesPlaying]) == -1) {
        this.gameResult = "You were wrong... Game Over!"
        this.clickedOnRandom = true;
+       this.indexForNotesPlaying = -1;
+       this.gameOver = true;
 
      }
 
      if (this.indexForNotesPlaying + 1 == this.randomButtons.length) {
-       this.gameResult = "Congratulations, You Won!"
-       this.clickedOnRandom = true;
+       console.log("length: " + this.randomButtons.length);
+       console.log("index: " + this.indexForNotesPlaying + 1);
+       this.gameResult = "Nice! let's make things a bit harder..."
+       this.level +=1;
+       this.generateRandom(this.level);
+       this.indexForNotesPlaying = -1;
+       this.clickedOnRandom = false;
   }
   
 }
@@ -124,14 +139,15 @@ playnote($event) {
   StartNewGame() {
     this.indexForNotesPlaying = -1;
     this.gameResult = '';
-     this.generateRandom();
+     this.generateRandom(1);
      this.clickedOnRandom = false;
+     this.level = 1;
   }
 
 
-  generateRandom() {
+  generateRandom(x) {
      this.randomButtons = [];
-     for (let i=0; i<5; i++) {
+     for (let i=0; i<x; i++) {
       switch (Math.floor(Math.random() * 4) + 1) {
          case 1:
              this.randomButtons[i] = 'red';
@@ -148,7 +164,6 @@ playnote($event) {
       }  
      }
      console.log(this.randomButtons);
-     
   }
 }
 
