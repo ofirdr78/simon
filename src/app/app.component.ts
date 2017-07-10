@@ -57,9 +57,9 @@ playnote($event) {
     this.audio.load();
     this.audio.play();
  
-    if (!this.gameOver) {
-      this.checkIfSimilarToRandom($event.srcElement.src);
-    }
+  
+    this.checkIfSimilarToRandom($event.srcElement.src);
+ 
     
 
    
@@ -123,15 +123,14 @@ playnote($event) {
        this.gameOver = true;
 
      }
+ 
+      if (this.indexForNotesPlaying + 1 == this.randomButtons.length && !this.gameOver) {
+        this.gameResult = "Nice! let's make things a bit harder..."
+        this.level +=1;
+        this.generateRandom(this.level);
+        this.indexForNotesPlaying = -1;
+        this.clickedOnRandom = false;
 
-     if (this.indexForNotesPlaying + 1 == this.randomButtons.length) {
-       console.log("length: " + this.randomButtons.length);
-       console.log("index: " + this.indexForNotesPlaying + 1);
-       this.gameResult = "Nice! let's make things a bit harder..."
-       this.level +=1;
-       this.generateRandom(this.level);
-       this.indexForNotesPlaying = -1;
-       this.clickedOnRandom = false;
   }
   
 }
@@ -142,6 +141,7 @@ playnote($event) {
      this.generateRandom(1);
      this.clickedOnRandom = false;
      this.level = 1;
+     this.gameOver = false;
   }
 
 
@@ -163,7 +163,6 @@ playnote($event) {
             break;
       }  
      }
-     console.log(this.randomButtons);
   }
 }
 
