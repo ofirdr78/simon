@@ -41,7 +41,6 @@ constructor () {
 
 playnote($event) {
   this.indexForNotesPlaying ++;
-  console.log($event.srcElement.src); 
   if ($event.srcElement.src.search("blue") != -1) {
     this.audio.src = "/assets/Anote.mp3";    
   }
@@ -57,7 +56,6 @@ playnote($event) {
     this.audio.load();
     this.audio.play();
  
-  
     this.checkIfSimilarToRandom($event.srcElement.src);
  
     
@@ -70,7 +68,6 @@ playnote($event) {
     this.clickedOnRandom = true;
    for (let i=0; i<this.randomButtons.length; i++) {
     await delay(600);
-     console.log(this.randomButtons[i]);
      if (this.randomButtons[i].search("blue") != -1) {
         this.resetButtons();
         this.audio.src = "/assets/Anote.mp3";   
@@ -114,8 +111,6 @@ playnote($event) {
   }
 
   checkIfSimilarToRandom(x) {
-    console.log(x);
-    console.log(this.randomButtons[this.indexForNotesPlaying]);
      if (x.search(this.randomButtons[this.indexForNotesPlaying]) == -1) {
        this.gameResult = "You were wrong... Game Over!"
        this.clickedOnRandom = true;
