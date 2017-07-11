@@ -1,8 +1,8 @@
 <div class="button_wrapper">
-<img [src]="pathRed" class="buttons" (click)=playnote($event)/>
-<img [src]="pathBlue" class="buttons" (click)=playnote($event) />
-<img [src]="pathGreen" class="buttons" (click)=playnote($event)/>
-<img [src]="pathYellow" class="buttons" (click)=playnote($event)/>
+  <img [src]="pathRed" class="buttons" (click)="playnote('red')"/>
+  <img [src]="pathBlue" class="buttons" (click)="playnote('blue')"/>
+  <img [src]="pathGreen" class="buttons" (click)="playnote('green')"/>
+  <img [src]="pathYellow" class="buttons" (click)="playnote('yellow')"/>
 </div>
 
 
@@ -10,11 +10,11 @@
 <button *ngIf="clickedOnRandom" disabled> Disabled...</button>
 
 <div class="level">
-Level: {{level}}
+  Level: {{level}}
 </div>
 
 <div class="result">
-{{gameResult}}
+  {{gameResult}}
 </div>
 
 
